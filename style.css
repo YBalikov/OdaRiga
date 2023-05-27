@@ -5,20 +5,15 @@
     font-family: 'Bitter', serif;
 }
 
-.body-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
 header {
     display: flex;
     align-items: center;
-    width: 100%;
+    min-width: 100vh;
     min-height: 9vh;
     background-color: whitesmoke;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 2;
 }
 
 .menu {
@@ -32,6 +27,7 @@ header {
     padding: 20px;
     margin: 0px;
     border-radius: 3px;
+    background: none;
 }
 
 .menu li a {
@@ -40,10 +36,12 @@ header {
 }
 
 .menu li:hover {
-    background: grey;
-    border-radius: 3px;
+    text-decoration: underline;
+    text-decoration-color: rgb(172, 0, 0);
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
     cursor: pointer;
-    transition: background-color 0.5s ease;
+    transition: text-decoration 0.5s ease;
 }
 
 .active {
@@ -68,39 +66,61 @@ header button:hover {
     cursor: pointer;
 }
 
-.scroller-button-wrapper {
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/******************** Hero Carousel ***********************/
+
+.hero-carousel {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-.button {
-    color:white;
-    text-shadow: 1px 1px 10px black;
-    font-size: 42px;
-    padding: 10px 20px;
-    margin: 10px;
-}
-
-.main-scroller {
-    height: 100vh;
-    width: 100%;
+.hero-carousel .carousel-slide {
+    height: 91vh;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url('pic/index photo/3.jpg');
-    background-size: cover;
+    background-image: url('pic/index photo/1.jpg');
     background-position: top center;
+    background-size: cover;
 
 }
 
-.main-scroller-text {
+.slide-text {
     color:white;
     text-shadow: 1px 1px 2px black;
     padding-left: 25vh;
 }
 
+.hero-carousel button {
+    all: unset;
+    color:white;
+    text-shadow: 1px 1px 10px black;
+    font-size: 3rem;
+    padding: 10px 20px;
+    margin: 10px;
+}
 
+.hero-carousel button:hover {
+    text-shadow: 1px 1px 5px black;
+    cursor: pointer;
+    transition: text-shadow 0.15s;
+}
+
+.button-wrapper {
+    min-width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+}
+
+
+
+/****************** Footer *********************/
 
 footer {
     background-color: #f2f2f2;
