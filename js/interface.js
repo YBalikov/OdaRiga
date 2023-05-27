@@ -5,7 +5,8 @@
 const slides = document.querySelectorAll('.hero-carousel .carousel-slide'),
       next = document.querySelector('.next'),
       prev = document.querySelector('.prev');
-let slideIndex = 1;
+
+      let slideIndex = 1;
 
 slides.forEach((slide, i) => {
     slide.style.backgroundImage = `url('pic/index photo/${i+1}.jpg')`;

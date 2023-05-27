@@ -73,7 +73,11 @@ main {
 
 /******************** Hero Carousel ***********************/
 
-.hero-carousel {
+/* .hero-carousel {
+    display: flex;
+} */
+
+.carousel-inner {
     display: flex;
 }
 
