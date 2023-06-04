@@ -5,40 +5,45 @@
     font-family: 'Poppins', serif;
 }
 
+/***************** Primary header *****************/
+
 header {
     display: flex;
     align-items: center;
-    min-width: 100vh;
     min-height: 9vh;
     background-color: whitesmoke;
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.9);
     position: relative;
     z-index: 2;
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
+header .logo {
     max-width: 25%;
-    height: auto;
     margin-left: 20px;
 }
 
-.menu {
-    list-style: none;
-    display: flex;
+nav {
     flex: 1;
+}
+
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
     justify-content: center;
 }
 
-.menu li {
+.primary-navigation li {
     padding: 20px;
-    font-size: 1rem;
     margin: 0px;
-    border-radius: 3px;
     background: none;
     cursor: pointer;
 }
 
-.menu li a {
+.primary-navigation li a {
     height: 100%;
     width: 100%;
     text-decoration: none;
@@ -46,7 +51,7 @@ header {
     position: relative;
 }
 
-.menu li a::after {
+.primary-navigation li a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -56,13 +61,12 @@ header {
     transition: border-color 0.3s ease;
 }
 
-.menu li:hover a::after {
+.primary-navigation li:hover a::after {
     border-color: rgb(148, 0, 0);
 }
 
 .active {
     font-weight: bold;
-    background-color: lightgrey;
 }
 
 .uppercase {
@@ -87,7 +91,6 @@ main {
     position: relative;
     z-index: 1;
     height: 91vh;
-    min-width: 100vh;
 }
 
 /******************** Hero Carousel ***********************/
@@ -152,7 +155,7 @@ main {
     transition: text-shadow 0.15s;
 }
 
-.controls {
+.hero-carousel .controls {
     min-width: 100%;
     position: absolute;
     display: flex;
@@ -197,4 +200,30 @@ footer {
 
 .footer-menu li a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 1300px) {
+
+    header .logo {
+        max-width: 50%;
+        margin-left: 20px;
+    }
+
+    .primary-navigation {
+        position: fixed;
+        inset: 0 0 0 55%;
+        flex-direction: column;
+        justify-content: start;
+        padding: min(30vh, 10rem) 2em;
+        background: hsl(0, 0, 50%, 0.9);
+        backdrop-filter: blur(3rem);
+    }
+
+    .primary-navigation li a{
+        color: white;
+    }
+
+    .hero-carousel .controls {
+        display: none;
+    }
 }

@@ -1,5 +1,6 @@
-'use strict';
-
+"use strict";
+/* jshint browser: true */
+/*jshint esversion: 6 */ 
 
 window.addEventListener('DOMContentLoaded', function() {
 
@@ -18,27 +19,6 @@ window.addEventListener('DOMContentLoaded', function() {
     slides.forEach((slide, i) => {
         slide.style.backgroundImage = `url('pic/index photo/${i+1}.jpg')`;
     });
-
-    // showSlides(slideIndex);
-
-    // function showSlides(n) {
-    //     if (n > slides.length) {
-    //         slideIndex = 1;
-    //     }
-
-    //     if (n < 1) {
-    //         slideIndex = slides.length;
-    //     }
-
-    //     slides.forEach(slide => slide.style.display = 'none');
-
-    //     slides[slideIndex - 1].style.display = 'flex';
-    //     console.log(slideIndex);
-    // }
-
-    // function plusSlides(n) {
-    //     showSlides(slideIndex += n);
-    // }
 
     next.addEventListener('click', () => {
         resetCarouselInterval();
