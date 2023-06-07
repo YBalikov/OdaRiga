@@ -5,7 +5,7 @@
     font-family: 'Poppins', serif;
 }
 
-/***************** Primary header *****************/
+/******************** Primary header *********************/
 
 header {
     display: flex;
@@ -26,6 +26,7 @@ header .logo {
 
 nav {
     flex: 1;
+    position: relative;
 }
 
 .primary-navigation {
@@ -34,16 +35,16 @@ nav {
     margin: 0;
     display: flex;
     justify-content: center;
+    gap: 40px;
 }
 
 .primary-navigation li {
-    padding: 20px;
     margin: 0px;
     background: none;
     cursor: pointer;
 }
 
-.primary-navigation li a {
+.primary-navigation a {
     height: 100%;
     width: 100%;
     text-decoration: none;
@@ -51,7 +52,7 @@ nav {
     position: relative;
 }
 
-.primary-navigation li a::after {
+.primary-navigation a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -73,7 +74,7 @@ nav {
     text-transform: uppercase;
 }
 
-header button {
+.big-header-button {
     font-size: 1.1rem;
     margin: 10px;
     padding: 10px;
@@ -81,19 +82,23 @@ header button {
     transition: background-color 0.5s;
 }
 
-header button:hover {
+.big-header-button:hover {
     background-color: black;
     color: white;
     cursor: pointer;
 }
+
+.mobile-nav-button {
+    display: none;
+}
+
+/******************** Main ***********************/
 
 main {
     position: relative;
     z-index: 1;
     height: 91vh;
 }
-
-/******************** Hero Carousel ***********************/
 
 .hero-carousel {
     width: 100%;
@@ -113,7 +118,7 @@ main {
     transition: all 0.7s;
 }
 
-.hero-carousel .carousel-slide {
+.carousel-slide {
     position: relative;
     flex-basis: 20%;
     flex-shrink: 0;
@@ -130,7 +135,7 @@ main {
     top: 55%;
     left: 50%;
     margin-left: -10px;
-    font-size: clamp(0.5rem, 1vw, 1vw)
+    font-size: clamp(0.7rem, 1vw, 1vw)
 }
 
 .slide-text h1,
@@ -164,7 +169,7 @@ main {
 }
 
 
-/****************** Footer *********************/
+/*********************** Footer *************************/
 
 footer {
     background-color: #f2f2f2;
@@ -202,7 +207,9 @@ footer {
     text-decoration: underline;
 }
 
-@media (max-width: 1300px) {
+/**************** Mobile responsibility ******************/
+
+@media (width < 1300px) {
 
     header .logo {
         max-width: 50%;
@@ -210,20 +217,47 @@ footer {
     }
 
     .primary-navigation {
+        z-index: 1000;
         position: fixed;
         inset: 0 0 0 55%;
         flex-direction: column;
         justify-content: start;
         padding: min(30vh, 10rem) 2em;
-        background: hsl(0, 0, 50%, 0.9);
-        backdrop-filter: blur(3rem);
+        background: whitesmoke;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+        transform: translateX(100%);
+        transition: transform 0.2s ease-out;
     }
 
-    .primary-navigation li a{
-        color: white;
+    .primary-navigation a{
+        color: black;
     }
 
     .hero-carousel .controls {
         display: none;
+    }
+
+    .mobile-nav-button {
+        display: block;
+        position: absolute;
+        all: unset;
+        display: block;
+        width: 2rem;
+        aspect-ratio: 1 / 1;
+        margin: 1rem;
+    }
+
+    .mobile-nav-button[data-state="closed"] {
+        z-index: 9999;
+        background: url("pic/nav burger.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .mobile-nav-button[data-state="opened"] {
+        z-index: 9999;
+        background: url("pic/nav close.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }

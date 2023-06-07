@@ -81,4 +81,21 @@ window.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
+    // Mobile navigation
+
+    const navButton = document.querySelector('.mobile-nav-button'),
+          navBar = document.querySelector('.primary-navigation');
+
+    navButton.addEventListener('click', () => {
+        let buttonState = navButton.getAttribute('data-state');
+
+        if (buttonState === 'closed') {
+            navButton.setAttribute('data-state', 'opened');
+            navBar.style.transform = 'translateX(0%)';
+        } else {
+            navButton.setAttribute('data-state', 'closed');
+            navBar.style.transform = 'translateX(100%)';
+        }
+    });
+
 });
