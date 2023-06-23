@@ -1,45 +1,36 @@
-"use strict";
-/* jshint browser: true */
-/*jshint esversion: 6 */ 
+function carousel (wrapper, allSlides, innerCarousel, btnNext, btnPrev) {
+    const carouselWrapper = document.querySelector(wrapper),
+        slides = document.querySelectorAll(allSlides),
+        carouselInner = document.querySelector(innerCarousel),
+        next = document.querySelector(btnNext),
+        prev = document.querySelector(btnPrev);
+    let direction;
 
-window.addEventListener('DOMContentLoaded', function() {
-
-    // Hero-carousel
-
-    const heroCarousel = document.querySelector('.hero-carousel'),
-        slides = document.querySelectorAll('.hero-carousel .carousel-slide'),
-        carouselInner = document.querySelector('.carousel-inner'),
-        next = document.querySelector('.next'),
-        prev = document.querySelector('.prev');
-    let slideIndex = 1;
-    var direction;
-
-    heroCarousel.style.opacity = '1';
+    carouselWrapper.style.opacity = '1';
 
     slides.forEach((slide, i) => {
-        slide.style.backgroundImage = `url('pic/index photo/${i+1}.jpg')`;
+        slide.style.backgroundImage = `url('pic/index photo/${i + 1}.jpg')`;
     });
 
     next.addEventListener('click', () => {
         resetCarouselInterval();
         if (direction === 1) {
             carouselInner.prepend(carouselInner.lastElementChild);
-            direction = -1; 
+            direction = -1;
         }
         direction = -1;
         carouselInner.style.transform = 'translate(-20%)';
-        heroCarousel.style.justifyContent = 'flex-start';
-
+        carouselWrapper.style.justifyContent = 'flex-start';
     });
 
     prev.addEventListener('click', () => {
         resetCarouselInterval();
         if (!direction || direction === -1) {
             carouselInner.appendChild(carouselInner.firstElementChild);
-            direction = 1; 
+            direction = 1;
         }
 
-        heroCarousel.style.justifyContent = 'flex-end';
+        carouselWrapper.style.justifyContent = 'flex-end';
         carouselInner.style.transform = 'translate(20%)';
     });
 
@@ -49,7 +40,6 @@ window.addEventListener('DOMContentLoaded', function() {
         } else if (direction === 1) {
             carouselInner.prepend(carouselInner.lastElementChild);
         }
-
 
         carouselInner.style.transition = 'none';
         carouselInner.style.transform = 'translate(0)';
@@ -61,41 +51,25 @@ window.addEventListener('DOMContentLoaded', function() {
     let carouselInterval = setInterval(() => {
         if (direction === 1) {
             carouselInner.prepend(carouselInner.lastElementChild);
-            direction = -1; 
+            direction = -1;
         }
         direction = -1;
         carouselInner.style.transform = 'translate(-20%)';
-        heroCarousel.style.justifyContent = 'flex-start';
+        carouselWrapper.style.justifyContent = 'flex-start';
     }, 5000);
 
-    function resetCarouselInterval() {
+    function resetCarouselInterval () {
         clearInterval(carouselInterval);
         carouselInterval = setInterval(() => {
             if (direction === 1) {
                 carouselInner.prepend(carouselInner.lastElementChild);
-                direction = -1; 
+                direction = -1;
             }
             direction = -1;
             carouselInner.style.transform = 'translate(-20%)';
-            heroCarousel.style.justifyContent = 'flex-start';
+            carouselWrapper.style.justifyContent = 'flex-start';
         }, 5000);
     }
+}
 
-    // Mobile navigation
-
-    const navButton = document.querySelector('.mobile-nav-button'),
-          navBar = document.querySelector('.primary-navigation');
-
-    navButton.addEventListener('click', () => {
-        let buttonState = navButton.getAttribute('data-state');
-
-        if (buttonState === 'closed') {
-            navButton.setAttribute('data-state', 'opened');
-            navBar.style.transform = 'translateX(0%)';
-        } else {
-            navButton.setAttribute('data-state', 'closed');
-            navBar.style.transform = 'translateX(100%)';
-        }
-    });
-
-});
+export default carousel;
